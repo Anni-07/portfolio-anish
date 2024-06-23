@@ -95,14 +95,14 @@ const Home = () => (
           className="md:h-full md:w-full mx-auto mb-4 object-cover"
         />
       </div>
-      <div>
+      <div className="grid place-items-center md:place-items-end">
         <h3 className="text-xl md:text-3xl">Hi! I am</h3>
         <h1 className="text-4xl md:text-6xl font-bold mb-2 px-4 md:px-0">
           Anish Mishra
         </h1>
-        <p className="text-xl mb-4 max-w-md">
+        <span className="text-xl mb-4 max-w-sm md:max-w-full w-full text-balance">
           Computer Science Engineering Student
-        </p>
+        </span>
         <a
           href="#contact"
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-4 rounded transition-colors duration-300"
@@ -299,6 +299,7 @@ const Contact = () => (
             value="Contact us from - anifolio"
           />
           <input type="hidden" name="replyTo" value="@" />
+          <input type="hidden" name="redirectTo" value={window.location.href} />
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors duration-300"

@@ -88,7 +88,8 @@ const Home = () => (
     >
       <div className="w-96 h-96 overflow-hidden">
         <Image
-          fill
+          width={600}
+          height={600}
           src="/anish.png"
           alt="Anish Mishra"
           className="md:h-full md:w-full mx-auto mb-4 object-cover"

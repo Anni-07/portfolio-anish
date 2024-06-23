@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
+import Image from "next/image";
 
 // Assuming Tailwind CSS is properly set up in your project
 
@@ -57,7 +58,7 @@ const Portfolio = () => {
   );
 };
 
-const NavLink = ({ href, children }) => (
+const NavLink = ({ href, children }: { href: string; children: ReactNode }) => (
   <a
     href={href}
     className="mx-3 py-2 text-sm font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300"
@@ -66,7 +67,7 @@ const NavLink = ({ href, children }) => (
   </a>
 );
 
-const SectionTitle = ({ children }) => (
+const SectionTitle = ({ children }: { children: ReactNode }) => (
   <motion.h2
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +87,8 @@ const Home = () => (
       className="text-center md:text-right grid md:place-items-center md:grid-cols-2"
     >
       <div className="w-96 h-96 overflow-hidden">
-        <img
+        <Image
+          fill
           src="/anish.png"
           alt="Anish Mishra"
           className="md:h-full md:w-full mx-auto mb-4 object-cover"
@@ -166,7 +168,13 @@ const Projects = () => (
   </section>
 );
 
-const ProjectCard = ({ title, description }) => (
+const ProjectCard = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.9 }}
     whileInView={{ opacity: 1, scale: 1 }}
@@ -204,7 +212,13 @@ const Skills = () => (
   </section>
 );
 
-const SkillCategory = ({ title, skills }) => (
+const SkillCategory = ({
+  title,
+  skills,
+}: {
+  title: string;
+  skills: string[];
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -235,7 +249,7 @@ const Contact = () => (
         transition={{ duration: 0.5 }}
         className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 max-w-md mx-auto"
       >
-        <form>
+        <form action="https://api.staticforms.xyz/submit" method="post">
           <div className="mb-4">
             <label htmlFor="name" className="block text-sm font-medium mb-2">
               Name
@@ -243,6 +257,7 @@ const Contact = () => (
             <input
               type="text"
               id="name"
+              name="name"
               className="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600"
               required
             />
@@ -254,6 +269,7 @@ const Contact = () => (
             <input
               type="email"
               id="email"
+              name="email"
               className="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600"
               required
             />
@@ -264,11 +280,24 @@ const Contact = () => (
             </label>
             <textarea
               id="message"
-              rows="5"
+              name="message"
+              rows={5}
               className="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600"
               required
             ></textarea>
           </div>
+          <input type="text" name="honeypot" style={{ display: "none" }} />
+          <input
+            type="hidden"
+            name="accessKey"
+            value="646a9402-615a-4e29-a24b-3d54dff3d46d"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            value="Contact us from - anifolio"
+          />
+          <input type="hidden" name="replyTo" value="@" />
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors duration-300"

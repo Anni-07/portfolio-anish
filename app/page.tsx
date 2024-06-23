@@ -299,7 +299,11 @@ const Contact = () => (
             value="Contact us from - anifolio"
           />
           <input type="hidden" name="replyTo" value="@" />
-          <input type="hidden" name="redirectTo" value={window.location.href} />
+          <input
+            type="hidden"
+            name="redirectTo"
+            value={"https://anifolio.vercel.app"}
+          />
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors duration-300"
